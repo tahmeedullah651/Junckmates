@@ -116,9 +116,8 @@ td {
     width: 75vw;
   }
 }
-@media only screen and (min-width: 639px) {
+@media only screen and (max-width: 635px) {
   .sizeMbl {
-    width: 50vw;
-    background-color: aqua;
+    margin-right: 20px;
   }
 }

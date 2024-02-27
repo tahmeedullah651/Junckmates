@@ -64,7 +64,6 @@ const EmailVerification = () => {
                     Update Password
                   </button>
                 )}
-                {isError && <p>{isError}</p>}
               </div>
             </div>
           </div>

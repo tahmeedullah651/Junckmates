@@ -2,6 +2,7 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../axios";
+import { errorToast } from "../../Utils/Toast";
 
 export const otp = createAsyncThunk("otp", async (payload) => {
   try {
@@ -16,6 +17,7 @@ export const otp = createAsyncThunk("otp", async (payload) => {
     console.log("Response Otp ===>", response.data);
     return response.data;
   } catch (error) {
+    errorToast("Invalid OTP");
     throw error;
   }
 });

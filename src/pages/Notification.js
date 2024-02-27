@@ -70,7 +70,7 @@ const Notification = () => {
             type="submit"
             // disabled={isLoading}
           >
-            Login
+            Send
           </button>
         </div>
       </div>

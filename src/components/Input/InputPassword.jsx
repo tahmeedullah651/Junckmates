@@ -82,7 +82,7 @@ const InputPassword = ({
         )}
       </button>
       {error && touch ? (
-        <span className="text-[9px] md:text-[11px] text-red-500 ml-3 mt-1">
+        <span className="text-[12px] md:text-[14px] text-red-500 ml-3 mt-1">
           {error}
         </span>
       ) : null}

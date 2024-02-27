@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../axios";
+import { errorToast, successToast } from "../../Utils/Toast";
 export const currentPassword = createAsyncThunk(
   "currentPassword",
   async (payload, thunkAPI) => {
@@ -10,8 +11,10 @@ export const currentPassword = createAsyncThunk(
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      successToast("Password updated successfully");
       return response.data;
     } catch (error) {
+      errorToast("Error updating password");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

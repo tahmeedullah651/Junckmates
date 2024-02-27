@@ -7,8 +7,8 @@ const getCharacterValidationError = (str) => {
 
 export const LoginSchema = Yup.object().shape({
   //   username: Yup.string().min(4).max(25).required("username is required"),
-  email: Yup.string().email().required("email is required"),
-  password: Yup.string().min(3).max(25).required("Please enter your password"),
+  email: Yup.string().email().required("Email is required"),
+  password: Yup.string().min(3).max(25).required("Password is required"),
   //   conformPassword: Yup.string()
   //     .required()
   //     .oneOf([Yup.ref("password"), null], "Password must be matched"),

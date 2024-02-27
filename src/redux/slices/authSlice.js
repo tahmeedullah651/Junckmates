@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../axios";
+import { errorToast, successToast } from "../../Utils/Toast";
 
 // Define createAsyncThunk outside the slice
 export const login = createAsyncThunk("/login", async (payload) => {
@@ -9,7 +10,10 @@ export const login = createAsyncThunk("/login", async (payload) => {
     console.log("login data ===>", response.data);
     return response.data; // Assuming your response contains the user data
   } catch (error) {
-    throw error.response.data; // Rethrow the error to be caught by the rejection handler
+    errorToast("Invalid Email or Password");
+
+    throw error.response.data;
+    // Rethrow the error to be caught by the rejection handler
   }
 });
 

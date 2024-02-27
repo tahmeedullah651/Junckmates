@@ -75,7 +75,6 @@ const OtpValidation = () => {
                     Verify Otp
                   </button>
                 )}
-                {isError && <p>{isError}</p>}
               </div>
             </div>
           </div>

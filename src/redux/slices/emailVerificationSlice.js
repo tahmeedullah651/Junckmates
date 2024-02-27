@@ -2,6 +2,7 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../axios";
+import { errorToast } from "../../Utils/Toast";
 
 export const email = createAsyncThunk("email", async (payload) => {
   try {
@@ -11,6 +12,7 @@ export const email = createAsyncThunk("email", async (payload) => {
     console.log("Response Email ===>", response);
     return response.data;
   } catch (error) {
+    errorToast("Invalid email");
     throw error;
   }
 });

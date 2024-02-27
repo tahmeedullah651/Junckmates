@@ -9,7 +9,6 @@ import { LoginSchema } from "../Schema";
 import { login } from "../redux/slices/authSlice";
 import InputPassword from "../components/Input/InputPassword";
 import ButtonLoading from "../components/Button/ButtonLoading";
-import { errorToast, successToast } from "../Utils/Toast";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -24,11 +23,8 @@ const Login = () => {
       },
       validationSchema: LoginSchema,
       onSubmit: () => {
-        // setLoading(true);
         dispatch(login(values))
           .then((res) => {
-            // action.resetForm();
-            // resetForm();
             console.log("res login", res.status);
             setTimeout(() => {
               navigate("/");
@@ -36,7 +32,6 @@ const Login = () => {
           })
           .catch((err) => {
             console.log("error ===>", err);
-            errorToast("Invalid email or Password!");
           });
       },
     });
