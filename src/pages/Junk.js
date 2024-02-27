@@ -89,7 +89,7 @@ const Junk = () => {
         <>
           <div className="pb-3 flex gap-3 w-full items-center">
             <form onSubmit={handleSubmit}>
-              <div className="flex items-start gap-2 flex-col sm:flex-row">
+              <div className="flex ml-4 items-start gap-2 flex-col sm:flex-row">
                 <div>
                   {" "}
                   <InputSmall
@@ -117,7 +117,7 @@ const Junk = () => {
             </form>
           </div>
           <div className="mt-7 bg-emerald-100 rounded-md mb-3 dashboardTableWrapper">
-            <table className="w-full min-w-[520px] border-collapse !overflow-x-auto ">
+            <table className="w-full mr-6 min-w-[520px] border-collapse !overflow-x-auto ">
               <thead>
                 {/* <th className="text-[--gray] font-[600] text-[16px] py-5 px-2 border">
           S/N

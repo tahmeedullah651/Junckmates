@@ -93,9 +93,14 @@ const Login = () => {
                   <p className="errorMessage">{errors.password}</p>
                 ) : null} */}
               </div>
-              <Link to="/email" className="text-right">
+              <div className="w-full text-right pr-3 -mt-3">
+                <Link to="/email">
+                  <h1 className="text-green-400">Forget password?</h1>
+                </Link>
+              </div>
+              {/* <Link to="/email" className="text-right">
                 Forgot Password?
-              </Link>
+              </Link> */}
               <div className="w-full text-center">
                 {isLoading ? (
                   <ButtonLoading customClasses="!w-full !mx-auto" />

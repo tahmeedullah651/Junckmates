@@ -11,7 +11,7 @@ export default function DashboardLayout() {
       <Header />
       <Sidebar />
       <div className="flex justify-center items-start w-screen min-h-screen">
-        <div className="h-screen min-w-[200px] md:w-[20%]"></div>
+        <div className="h-screen min-w-[160px] md:w-[20%]"></div>
         <div className="w-[90%] md:w-[80%] flex justify-center items-start">
           <Outlet />
         </div>

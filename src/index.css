@@ -72,14 +72,12 @@ html {
   overflow-x: hidden;
 }
 .dashboardTableWrapper {
-  width: 100%;
+  width: 95%;
   overflow-x: auto !important;
 }
-
 /* table {
   padding: 3px;
 }
-
 table thead tr th {
   padding-top: 25px;
   padding-bottom: 12px;
@@ -116,5 +114,11 @@ td {
 @media only screen and (max-width: 840px) {
   .size {
     width: 75vw;
+  }
+}
+@media only screen and (min-width: 639px) {
+  .sizeMbl {
+    width: 50vw;
+    background-color: aqua;
   }
 }

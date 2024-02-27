@@ -3,6 +3,7 @@ import { FaUserTie, FaRegUser } from "react-icons/fa";
 import { BsColumnsGap, BsBoxSeam } from "react-icons/bs";
 import { VscFileSymlinkDirectory } from "react-icons/vsc";
 import { MdOutlineSettings } from "react-icons/md";
+import { MdOutlineNotificationsActive } from "react-icons/md";
 export const SidebarData = [
   {
     label: "Dashboard",
@@ -29,11 +30,12 @@ export const SidebarData = [
     icon: <BsBoxSeam />,
     url: "/junk-categories",
   },
-  // {
-  //   label: "Notification",
-  //   icon: <MdOutlineSettings />,
-  //   url: "/notification",
-  // },
+  {
+    label: "Notification",
+    icon: <MdOutlineNotificationsActive />,
+    url: "/notification",
+  },
+
   {
     label: "Settings",
     icon: <MdOutlineSettings />,

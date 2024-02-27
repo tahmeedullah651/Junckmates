@@ -10,7 +10,7 @@ import otpReducer from "./slices/otpValidationSlice";
 import newPasswordReducer from "./slices/newPasswordSlice";
 import detailReducer from "./slices/detailSlice";
 import reviewsReducer from "./slices/reviewsSlice";
-import statusReducer from "./slices/changeStatusSlice";
+// import statusReducer from "./slices/changeStatusSlice";
 export default combineReducers({
   auth: authReducer,
   dashbaord: dashboardReducer,
@@ -23,5 +23,5 @@ export default combineReducers({
   Newpassword: newPasswordReducer,
   detail: detailReducer,
   reviews: reviewsReducer,
-  status: statusReducer,
+  // status: statusReducer,
 });

@@ -43,23 +43,26 @@ const Settings = () => {
       },
     });
   return (
-    <div className="flex w-[95%] ">
-      <form onSubmit={handleSubmit}>
-        <div className="w-full flex justify-start gap-3 flex-col md:flex-row">
-          <div>
+    <div className="w-[80vw] pl-4 h-auto my-3 rounded-lg mx-auto">
+      <div className="pb-3 flex gap-2 md:w-full flex-col items-center mr-16 md:flex-row">
+        <form
+          onSubmit={handleSubmit}
+          className="pb-3 flex w-full gap-2 md:w-full flex-col items-center mr-16 md:flex-row"
+        >
+          <div className="flex flex-col md:flex-row">
             <InputPassword
               label="Current Password"
               id="currentPassword"
               name="currentPassword"
               autoComplete="off"
               type="password"
-              placeholder="Add Current Password"
+              placeholder="*****"
               value={values.currentPassword}
               onBlur={handleBlur}
               onChange={handleChange}
               touch={touched.currentPassword}
               error={errors.currentPassword}
-              customClasses={"!w-[250px]"}
+              customClasses={"!w-[40vw] md:!w-[30vw]"}
             />
           </div>
           <div>
@@ -69,25 +72,25 @@ const Settings = () => {
               name="password"
               autoComplete="off"
               type="password"
-              placeholder="Add New Password"
+              placeholder="*****"
               value={values.password}
               onBlur={handleBlur}
               onChange={handleChange}
               touch={touched.password}
               error={errors.password}
-              customClasses={"!w-[250px]"}
+              customClasses={"!w-[40vw] md:!w-[30vw]"}
             />
           </div>
-        </div>
-        <div className="pt-2">
-          <button
-            className="rounded-md flex justify-center items-center px-6 py-2 bg-emerald-400 gap-1 text-white text-sm"
-            type="submit"
-          >
-            Update
-          </button>
-        </div>
-      </form>
+          <div className=" pt-1 md:pt-6 ">
+            <button
+              className="rounded-md flex justify-center items-center px-6 py-2.5 bg-emerald-400 gap-1 text-white text-sm w-[40vw] md:w-[12vw]"
+              type="submit"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

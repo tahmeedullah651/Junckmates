@@ -30,6 +30,6 @@ export const junkSchema = Yup.object({
   name: stringValidation("Junk category is required"),
 });
 export const changePasswordSchema = Yup.object({
-  password: Yup.number().required("New Password is required"),
-  currentPassword: Yup.number().required("Current Password is required"),
+  password: Yup.string().required("New Password is required"),
+  currentPassword: Yup.string().required("Current Password is required"),
 });

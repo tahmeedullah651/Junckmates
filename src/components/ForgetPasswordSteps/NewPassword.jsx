@@ -3,8 +3,6 @@ import { useFormik } from "formik";
 import { passwordSchema } from "../../Schema";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "../Input/Input";
-import Header from "../Header/Header";
-import { email } from "../../redux/slices/emailVerificationSlice";
 import ButtonLoading from "../Button/ButtonLoading";
 import { useNavigate } from "react-router-dom";
 import { newPassword } from "../../redux/slices/newPasswordSlice";
@@ -13,18 +11,14 @@ const NewPassword = () => {
   const navigate = useNavigate();
   const { isLoading, isError } = useSelector((state) => state.Newpassword);
   const data = useSelector((state) => state.email);
-  // const isError = useSelector((state) => state.email);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
         newPassword: "",
-        // code: localStorage.getItem("code"),
-        // userId: localStorage.getItem("userid"),
       },
       validationSchema: passwordSchema,
       onSubmit: () => {
-        // setLoading(true);
         dispatch(
           newPassword({
             userId: data.data.userid,
@@ -32,7 +26,6 @@ const NewPassword = () => {
           })
         )
           .then((res) => {
-            console.log("res", res.type);
             if (res.type === "newPassword/fulfilled") {
               navigate("/login");
             }
@@ -49,15 +42,15 @@ const NewPassword = () => {
         <div className="w-[80vw] h-full  flex justify-center mt-20 gap-6">
           <div className="w-full sm:w-full md:w-1/2 lg:w-1/2 px-4 ">
             <h1 className="font-satoshi font-bold text-3xl py-4">
-              Login your account
+              Update Your Password
             </h1>
             <div className="flex flex-col gap-5">
               <Input
                 autoComplete="off"
-                label="New Password"
+                label="Enter New Password"
                 name="newPassword"
                 type="number"
-                placeholder="Enter New Password"
+                placeholder="New Password"
                 value={values.newPassword}
                 touch={touched.newPassword}
                 onBlur={handleBlur}
@@ -74,7 +67,7 @@ const NewPassword = () => {
                     type="submit"
                     disabled={isLoading}
                   >
-                    Verify
+                    Update Password
                   </button>
                 )}
                 {isError && <p>{isError}</p>}

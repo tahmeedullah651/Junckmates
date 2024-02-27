@@ -107,7 +107,7 @@ const Dumpster = () => {
         <>
           <div className="pb-3 flex gap-3 w-full items-center">
             <form onSubmit={handleSubmit}>
-              <div className="w-full flex justify-start gap-3 flex-col md:flex-row">
+              <div className="w-full ml-4 flex justify-start gap-3 flex-col md:flex-row">
                 <div>
                   {" "}
                   <InputSmall
@@ -139,7 +139,8 @@ const Dumpster = () => {
                     touch={touched.loadSize}
                     error={errors.loadSize}
                     disable={isUpdate}
-                    customClasses={"lg:!w-[250px] md:!w-[150px]"}
+                    customClasses={"!w-[250px]"}
+                    // customClasses={"lg:!w-[250px] md:!w-[150px]"}
                   />
                 </div>
                 <div className="pt-6">
@@ -152,7 +153,7 @@ const Dumpster = () => {
             </form>
           </div>
           <div className="mt-7 bg-emerald-100 rounded-md mb-3 dashboardTableWrapper">
-            <table className="w-full min-w-[520px] border-collapse !overflow-x-auto ">
+            <table className="w-full mr-6 min-w-[520px] border-collapse !overflow-x-auto ">
               <thead>
                 <tr>
                   <th className="border text-left font-semibold py-5 px-2 pl-8">

@@ -12,14 +12,14 @@ const SettingWrapper = ({ children, profile }) => {
     }
   };
   return (
-    <div className=" h-screen w-full">
+    <div className="w-[75vw]">
       <div className="w-full mx-auto">
-        <div className="text-white flex justify-center items-center w-full py-8 mx-auto">
-          <div className="w-32 h-32">
+        <div className="text-white flex justify-center items-center w-full py-4 mx-auto">
+          <div className="w-28 h-28">
             <img
               src={imageFileUrl || profile || Admin}
               alt=""
-              className="w-full h-full rounded-full"
+              className="w-full h-full rounded-full object-cover"
               onClick={() => filePickerRef.current.click()}
             />
             <input

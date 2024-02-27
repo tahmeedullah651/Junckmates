@@ -13,14 +13,11 @@ const OtpValidation = () => {
   const navigate = useNavigate();
   const { isLoading, isError } = useSelector((state) => state.otp);
   const data = useSelector((state) => state.email);
-  // const isError = useSelector((state) => state.email);
   console.log("email user otp", data);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
         inputCode: "",
-        // code: localStorage.getItem("code"),
-        // userId: localStorage.getItem("userid"),
       },
       validationSchema: otpValidation,
       onSubmit: () => {
@@ -50,12 +47,12 @@ const OtpValidation = () => {
         <div className="w-[80vw] h-full  flex justify-center mt-20 gap-6">
           <div className="w-full sm:w-full md:w-1/2 lg:w-1/2 px-4 ">
             <h1 className="font-satoshi font-bold text-3xl py-4">
-              Login your account
+              OTP Confirmation
             </h1>
             <div className="flex flex-col gap-5">
               <Input
                 autoComplete="off"
-                label="OTP"
+                label="Enter OTP"
                 name="inputCode"
                 type="number"
                 placeholder="Enter OTP"
@@ -75,7 +72,7 @@ const OtpValidation = () => {
                     type="submit"
                     disabled={isLoading}
                   >
-                    Verify
+                    Verify Otp
                   </button>
                 )}
                 {isError && <p>{isError}</p>}

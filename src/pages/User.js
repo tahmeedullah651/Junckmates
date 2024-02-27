@@ -49,7 +49,7 @@ const User = () => {
         <div>{isError}</div>
       ) : (
         <div className="mt-7 bg-emerald-100 rounded-md h-screen mx-8 mb-3 dashboardTableWrapper">
-          <table className="w-full min-w-[850px] border-collapse !overflow-x-auto ">
+          <table className="w-full mr-2  min-w-[850px] border-collapse !overflow-x-auto ">
             <thead className="">
               <tr className="mb-4 pb-4 text-zinc-500 font-satoshi font-medium text-[16px] ">
                 <th className="text-left pl-10 font-[600] text-[16px] py-5 px-2 ">
@@ -76,26 +76,30 @@ const User = () => {
                 data.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <Link to="/detail" onClick={() => getUserById(item?._id)}>
-                        <td className=" capitalize text-left px-8 text-sm py-2 max-w-[260px] min-w-[150px] text-ellipsis overflow-hidden flex gap-2">
-                          {/* {rowData.name} */}
+                      <td>
+                        {/* {rowData.name} */}
+                        <Link
+                          to="/detail"
+                          onClick={() => getUserById(item?._id)}
+                          className=" capitalize text-left px-8 text-sm py-2 max-w-[260px] min-w-[150px] text-ellipsis overflow-hidden flex gap-2"
+                        >
                           <div className="flex justify-center items-center">
                             <img
                               // src={item?.photo}
                               src={`https://api.junkmates.app/${item?.photo}`}
                               // src={`https://api.junkmates.app/${photo}`}
                               alt="User"
-                              className="w-[50px] h-[40px] rounded-full"
+                              className="w-[50px] h-[40px] rounded-full object-cover"
                             />
                           </div>
                           <div className="flex flex-col w-full font-satoshi font-medium justify-center">
                             {item?.firstName + " " + item?.lastName}
                             <span className="text-xs font-satoshi font-normal flex">
-                              @{data?.firstName}
+                              @{item?.firstName}
                             </span>
                           </div>
-                        </td>
-                      </Link>
+                        </Link>
+                      </td>
                       <td
                         onClick={(e) => {
                           if (e.target.classList.contains("max-w-[160px]")) {

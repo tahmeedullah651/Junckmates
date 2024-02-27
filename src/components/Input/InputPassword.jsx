@@ -10,37 +10,38 @@ const InputPassword = ({
   onBlur,
   error,
   touch,
-  autoComplete,
   customClasses,
+  inputStyle,
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState) => !prevState);
   }
+
   return (
     <div className={`relative w-full ${customClasses}`}>
       <label
         htmlFor={id}
-        className="block mb-1 pl-[2px] font-medium text-[14px] capitalize"
+        className="block mb-1 pl-[2px] font-[500px] text-[16px] capitalize"
       >
         {label}
       </label>
       <input
         id={id}
-        onChange={onChange}
         name={name}
-        value={value}
         type={isPasswordVisible ? "text" : "password"}
         placeholder={placeholder}
+        onChange={onChange}
+        value={value}
         onBlur={onBlur}
-        className=" border border-gray-300 outline-none text-gray-900 sm:text-sm rounded-lg focus:border-gray-800 block w-full p-2.5 "
+        autoComplete="off"
+        className={`border border-gray-300 outline-none text-gray-900 sm:text-sm rounded-lg focus:border-gray-800 block w-full p-2.5 ${inputStyle}`}
       />
       <button
         type="button"
-        className={`absolute flex items-center px-4 text-gray-600 ${
-          error && touch ? "passwordIcon" : "passwordIconCenter"
-        }`}
+        className={`absolute flex items-center px-4 text-gray-600
+         ${error && touch ? "passwordIcon" : "passwordIconCenter"}`}
         onClick={togglePasswordVisibility}
       >
         {isPasswordVisible ? (
@@ -81,7 +82,7 @@ const InputPassword = ({
         )}
       </button>
       {error && touch ? (
-        <span className="text-[12px] md:text-[14px] text-red-500 ml-3 mt-1">
+        <span className="text-[9px] md:text-[11px] text-red-500 ml-3 mt-1">
           {error}
         </span>
       ) : null}

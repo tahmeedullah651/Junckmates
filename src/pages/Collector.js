@@ -76,7 +76,7 @@ const Collector = () => {
         <div>{isError}</div>
       ) : (
         <div className="mt-7 bg-emerald-100 rounded-md h-screen mx-8 mb-3 dashboardTableWrapper">
-          <table className="w-full min-w-[850px] border-collapse !overflow-x-auto ">
+          <table className="w-full mr-2 min-w-[850px] border-collapse !overflow-x-auto ">
             <thead className="">
               <tr className="mb-4 pb-4 text-zinc-500 font-satoshi font-medium text-[16px] ">
                 <th className="text-left pl-10 font-[600] text-[16px] py-5 px-2 ">
@@ -91,10 +91,10 @@ const Collector = () => {
                 {/* <th className="text-[--gray] font-[600] text-[16px] py-5 px-2 ">
                   Review
                 </th> */}
-                <th className="text-[--gray] font-[600] text-[16px] py-5 px-2 ">
+                <th className="text-left  font-[600] text-[16px] py-5 px-2 ">
                   Active
                 </th>
-                <th className="text-[--gray] font-[600] text-[16px] py-5 px-2 ">
+                <th className="text-left font-[600] text-[16px] py-5 px-2 ">
                   Complete
                 </th>
                 <th className="text-left font-[600] text-[16px] py-5 px-2 ">
@@ -108,11 +108,18 @@ const Collector = () => {
                 data.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <Link to="/detail" onClick={() => getUserById(item?._id)}>
-                        <td className="capitalize text-left px-8 text-sm py-2 max-w-[260px] min-w-[150px] text-ellipsis overflow-hidden flex gap-2">
+                      <td>
+                        <Link
+                          to="/detail"
+                          onClick={() => getUserById(item?._id)}
+                          className="capitalize text-left px-8 text-sm py-2 max-w-[260px] min-w-[150px] text-ellipsis overflow-hidden flex gap-2"
+                        >
                           <div className="flex justify-center items-center ">
                             <img
-                              src={`https://api.junkmates.app/${item?.photo}`}
+                              src={
+                                `https://api.junkmates.app/${item?.photo}` ||
+                                User
+                              }
                               alt="User"
                               className="w-[50px] h-[40px] rounded-full" // Apply border-radius for perfect circle
                             />
@@ -123,8 +130,8 @@ const Collector = () => {
                               @{item?.firstName}
                             </span>
                           </div>
-                        </td>
-                      </Link>
+                        </Link>
+                      </td>
 
                       <td
                         onClick={(e) => {
@@ -140,20 +147,19 @@ const Collector = () => {
                       >
                         {item?.email}
                       </td>
-                      <Link
-                        to="/reviews"
-                        onClick={() => getReviewsId(item?._id)}
-                      >
-                        <td className="text-center px-1 text-sm py-2 capitalize ">
-                          {/* {data?.bookedOrdersCount || 0} */}
-                          {/* review={calculateAverageRating(item.reviews)} */}
+
+                      <td className="text-center px-1 text-sm py-2 capitalize">
+                        <Link
+                          to="/reviews"
+                          onClick={() => getReviewsId(item?._id)}
+                        >
                           {item?.reviews
                             ? calculateAverageRating(item.reviews)
                             : null}
-                          ⭐
-                        </td>
-                      </Link>
-                      <td className="text-center px-1 text-sm py-2 capitalize ">
+                        </Link>
+                      </td>
+
+                      <td className="text-center px-1 text-sm py-2 capitalize">
                         {item?.bookedOrdersCount}
                       </td>
                       <td className=" text-center px-2 text-sm py-2 capitalize">
