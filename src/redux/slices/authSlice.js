@@ -11,8 +11,8 @@ export const login = createAsyncThunk("/login", async (payload) => {
     return response.data; // Assuming your response contains the user data
   } catch (error) {
     errorToast("Invalid Email or Password");
-
-    throw error.response.data;
+    console.log("Invalid Email or Password", error);
+    throw error;
     // Rethrow the error to be caught by the rejection handler
   }
 });

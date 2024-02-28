@@ -49,7 +49,7 @@ const Notification = () => {
             name="msg"
             autoComplete="off"
             type="text"
-            placeholder="abdullah@gmail.com"
+            placeholder="Title"
             value={values.msg}
             onBlur={handleBlur}
             onChange={handleChange}
@@ -66,7 +66,7 @@ const Notification = () => {
             required
           />
           <button
-            className="rounded-md flex justify-center items-center p-2.5 bg-emerald-400 gap-1 text-white w-full"
+            className="rounded-md flex justify-center items-center p-2.5 bg-emerald-400 gap-1 text-white w-[75px]"
             type="submit"
             // disabled={isLoading}
           >

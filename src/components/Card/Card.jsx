@@ -3,7 +3,7 @@ import React from "react";
 const Card = ({ icon, name, total }) => {
   return (
     <div className="w-[220px] h-44 mr-8 sm:w-[300px] sm:h-56 md:w-[300px] md:h-56 lg:w-[300px] lg:h-56 flex flex-col gap-2 rounded-md items-center justify-center shadow-md bg-white">
-      <div className=" text-white flex justify-center items-center  w-14 h-14 sm:w-24 sm:h-24 md:w-24 md:h-24 lg:w-24 lg:h-24  bg-green-300 rounded-full">
+      <div className=" text-white flex justify-center items-center  w-14 h-14 sm:w-24 sm:h-24 md:w-24 md:h-24 lg:w-16 lg:h-16  bg-[#1fdb8381] rounded-full">
         {icon}
       </div>
 

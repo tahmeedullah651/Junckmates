@@ -80,56 +80,53 @@ const Junk = () => {
     setDataId(dataItem._id);
   };
   return (
-    <div className="w-full h-screen my-3 rounded-lg px-4 ">
+    <div className="w-full my-3 rounded-lg px-4 ">
+      <div className="pb-3 flex gap-3 w-full items-center">
+        <form onSubmit={handleSubmit}>
+          <div className="flex ml-4 items-start gap-2 flex-col sm:flex-row sm:ml-0">
+            <div>
+              {" "}
+              <InputSmall
+                label="Add Category"
+                id="name"
+                name="name"
+                autoComplete="off"
+                type="text"
+                placeholder="Add Category"
+                value={values.name}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                touch={touched.name}
+                error={errors.name}
+              />
+            </div>
+
+            <div className="sm:pt-[25px]">
+              <IconButton text={isUpdate ? "Update" : "Add"} type="submit" />
+            </div>
+          </div>
+        </form>
+      </div>
       {isLoading ? (
         <Loader />
       ) : isError ? (
         <div>Error:{isError}</div>
       ) : (
         <>
-          <div className="pb-3 flex gap-3 w-full items-center">
-            <form onSubmit={handleSubmit}>
-              <div className="flex ml-4 items-start gap-2 flex-col sm:flex-row sm:ml-0">
-                <div>
-                  {" "}
-                  <InputSmall
-                    label="Add Category"
-                    id="name"
-                    name="name"
-                    autoComplete="off"
-                    type="text"
-                    placeholder="Add Category"
-                    value={values.name}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    touch={touched.name}
-                    error={errors.name}
-                  />
-                </div>
-
-                <div className="sm:pt-[25px]">
-                  <IconButton
-                    text={isUpdate ? "Update" : "Add"}
-                    type="submit"
-                  />
-                </div>
-              </div>
-            </form>
-          </div>
-          <div className="mt-7 bg-emerald-100 rounded-md mb-3 dashboardTableWrapper">
+          <div className="mt-7 bg-emerald-100 rounded-md px-3 mb-3 dashboardTableWrapper">
             <table className="w-full min-w-[520px] border-collapse !overflow-x-auto mr-6 sm:mr-0">
               <thead>
                 {/* <th className="text-[--gray] font-[600] text-[16px] py-5 px-2 border">
           S/N
         </th> */}
-                <tr className="mb-4 pb-4 text-zinc-500 font-satoshi font-medium text-[16px] ">
-                  <th className="border text-left font-[600] text-[16px] py-5 px-2 pl-8">
+                <tr className="mb-4 pb-4 text-zinc-500 font-satoshi font-medium text-[16px] border-b-2">
+                  <th className="= text-left font-[600] text-[16px] py-5 px-2 pl-8">
                     Name of category
                   </th>
-                  <th className="border text-left font-[600] text-[16px] py-5 px-2 ">
+                  <th className=" text-left font-[600] text-[16px] py-5 px-2 ">
                     Number of posts
                   </th>
-                  <th className=" border text-left font-[600] text-[16px] py-5 px-2 pl-3">
+                  <th className="  text-left font-[600] text-[16px] py-5 px-2 pl-3">
                     Action
                   </th>
                 </tr>
@@ -138,19 +135,19 @@ const Junk = () => {
                 {data && data.length
                   ? data.map((item, index) => {
                       return (
-                        <tr key={index} className="w-full">
-                          <td className="border pl-8 text-left px-2 text-sm py-2 capitalize">
+                        <tr key={index} className="w-full border-b-2">
+                          <td className=" pl-8 text-left px-2 text-sm py-2 capitalize">
                             {item?.name}
                           </td>
 
-                          <td className=" border text-left px-1 text-sm py-2 pl-8 capitalize ">
+                          <td className="  text-left px-1 text-sm py-2 pl-8 capitalize ">
                             {item?.posts || 0}
                           </td>
 
-                          <td className="border  text-sm py-2 capitalize pl-3">
+                          <td className=" text-sm py-2 capitalize pl-3">
                             <div className="max-w-[160px]">
                               <button
-                                className="bg-emerald-400  px-4 py-2 rounded-md"
+                                className="bg-emerald-400  px-4 py-2.5 rounded-md"
                                 onClick={() => handleEdit(item)}
                               >
                                 Edit

@@ -5,6 +5,7 @@ import { TbCalendarCheck } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashboardData } from "../redux/slices/dashboardSlice";
 import Loader from "../components/Loading/Loader";
+
 let Once = true;
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="w-full h-screen bg-white">
+      <div className="w-full h-full">
         {isLoading ? (
           <Loader />
         ) : isError ? (
@@ -34,14 +35,14 @@ const Dashboard = () => {
               total={
                 data?.collectors || 0
               } /* Assuming 'collectors' is a field in your userData */
-              icon={<FaRegUser size={"42px"} />}
+              icon={<FaRegUser size={"30px"} />}
             />
             <Card
               name="No. of Users"
               total={
                 data?.users || 0
               } /* Assuming 'users' is a field in your userData */
-              icon={<FaUserTie size={"42px"} />}
+              icon={<FaUserTie size={"30px"} />}
             />
             <Card
               name="No. of  active bookings"
@@ -51,18 +52,18 @@ const Dashboard = () => {
             <Card
               name="No. of complete bookings"
               total={data?.completedBookings || 0}
-              icon={<FaRegUser size={"42px"} />}
+              icon={<FaRegUser size={"30px"} />}
             />
             <Card
               name="No. of categories"
               total={data?.categories || 0}
-              icon={<FaUserTie size={"42px"} />}
+              icon={<FaUserTie size={"30px"} />}
             />
 
             <Card
               name="No. of dumpster sizes"
               total={data?.DumpsterSizes || 0}
-              icon={<TbCalendarCheck size={"42px"} />}
+              icon={<TbCalendarCheck size={"30px"} />}
             />
           </div>
         )}

@@ -65,10 +65,10 @@ const collectorSlice = createSlice({
         state.isLoading = false;
         state.isError = action.error.message;
       })
-      .addCase(changeStatusById.pending, (state, action) => {
-        state.isLoading = true;
-        state.isError = null;
-      })
+      // .addCase(changeStatusById.pending, (state, action) => {
+      //   state.isLoading = true;
+      //   state.isError = null;
+      // })
       .addCase(changeStatusById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.data = state.data?.map((item) =>

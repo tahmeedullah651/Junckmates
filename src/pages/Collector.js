@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import User from "../assets/images/image.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,8 +9,14 @@ import Loader from "../components/Loading/Loader";
 import { Link } from "react-router-dom";
 import { fetchDetailsData } from "../redux/slices/detailSlice";
 import { fetchReviewsData } from "../redux/slices/reviewsSlice";
+import StatusLoading from "../components/Button/StatusButton";
+import { FaStar } from "react-icons/fa";
 let Once = true;
 const Collector = () => {
+  const [buttonload, setButtonload] = useState({
+    id: null,
+    load: false,
+  });
   const dispatch = useDispatch();
   const details = useSelector((state) => state.collector);
   const { isLoading, isError, data } = details;
@@ -56,8 +62,16 @@ const Collector = () => {
     console.log("user id", id);
   };
   const changeStatus = (id) => {
+    setButtonload({
+      id: id,
+      load: true,
+    });
     dispatch(changeStatusById(id))
       .then((res) => {
+        setButtonload({
+          id: null,
+          load: false,
+        });
         console.log("Response status Data==>", res);
       })
       .catch((err) => {
@@ -75,10 +89,10 @@ const Collector = () => {
       ) : isError ? (
         <div>{isError}</div>
       ) : (
-        <div className="mt-7 bg-emerald-100 rounded-md h-screen mx-8 mb-3 dashboardTableWrapper">
-          <table className="w-full mr-2 min-w-[850px] border-collapse !overflow-x-auto ">
+        <div className="mt-7 bg-emerald-100 rounded-md px-3 mx-8 mb-3 dashboardTableWrapper">
+          <table className="w-full mr-2 sm:mr-0 min-w-[850px] border-collapse !overflow-x-auto ">
             <thead className="">
-              <tr className="mb-4 pb-4 text-zinc-500 font-satoshi font-medium text-[16px] ">
+              <tr className="mb-4 pb-4 text-zinc-500 font-satoshi font-medium text-[16px] border-b-2">
                 <th className="text-left pl-10 font-[600] text-[16px] py-5 px-2 ">
                   Name
                 </th>
@@ -107,7 +121,7 @@ const Collector = () => {
                 data.length &&
                 data.map((item, index) => {
                   return (
-                    <tr key={index}>
+                    <tr key={index} className="border-b-2">
                       <td>
                         <Link
                           to="/detail"
@@ -132,7 +146,6 @@ const Collector = () => {
                           </div>
                         </Link>
                       </td>
-
                       <td
                         onClick={(e) => {
                           if (e.target.classList.contains("max-w-[160px]")) {
@@ -147,18 +160,19 @@ const Collector = () => {
                       >
                         {item?.email}
                       </td>
-
                       <td className="text-center px-1 text-sm py-2 capitalize">
                         <Link
                           to="/reviews"
                           onClick={() => getReviewsId(item?._id)}
                         >
-                          {item?.reviews
-                            ? calculateAverageRating(item.reviews)
-                            : null}
+                          {item?.reviews ? (
+                            <div className="flex items-center gap-[2px]">
+                              {calculateAverageRating(item.reviews)}{" "}
+                              <FaStar className="text-[9px] sm:text-[13px] text-yellow-300" />
+                            </div>
+                          ) : null}
                         </Link>
                       </td>
-
                       <td className="text-center px-1 text-sm py-2 capitalize">
                         {item?.bookedOrdersCount}
                       </td>
@@ -166,12 +180,20 @@ const Collector = () => {
                         {item?.completedOrdersCount}
                       </td>
                       <td className="  px-2 text-sm py-2 capitalize text-left">
-                        <button
-                          className="bg-emerald-400 px-4 py-2 rounded-md"
-                          onClick={() => changeStatus(item?._id)}
-                        >
-                          {item?.active ? "UnBlock" : "Block"}
-                        </button>
+                        {buttonload.load && buttonload.id === item._id ? (
+                          <StatusLoading
+                            customClasses={
+                              "!w-[80px] !h-[40px] !text-[11px] !font-bold !rounded-md sm:!text-[12px]"
+                            }
+                          />
+                        ) : (
+                          <button
+                            className="bg-emerald-400 w-[80px] text-white h-[40px]  rounded-md"
+                            onClick={() => changeStatus(item?._id)}
+                          >
+                            {item?.active ? "Block" : "UnBlock"}
+                          </button>
+                        )}
                       </td>
                     </tr>
                   );

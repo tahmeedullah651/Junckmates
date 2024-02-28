@@ -25,15 +25,36 @@ const Login = () => {
       onSubmit: () => {
         dispatch(login(values))
           .then((res) => {
-            console.log("res login", res.status);
-            setTimeout(() => {
+            console.log("res login", res);
+            // Assuming the response contains information about the login status
+            if (res.success) {
+              // If login is successful, navigate to the home page
               navigate("/");
-            }, 3000);
+            } else {
+              // If login fails due to wrong credentials or other reasons
+              console.log("Login failed:", res.message); // Log the error message
+              // You can also display an error message to the user if needed
+            }
           })
           .catch((err) => {
-            console.log("error ===>", err);
+            // Handle errors caught during the login process
+            console.error("Error during login:", err);
+            // Display an error message to the user or handle the error in another way
           });
       },
+
+      // onSubmit: () => {
+      //   dispatch(login(values))
+      //     .then((res) => {
+      //       console.log("res login", res);
+      //       // setTimeout(() => {
+      //       navigate("/");
+      //       // }, 3000);
+      //     })
+      //     .catch((err) => {
+      //       console.log("error ===>", err);
+      //     });
+      // },
     });
   // console.log("Error", isError);
   return (

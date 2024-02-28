@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import IconButton from "../components/Button/IconButton";
 import { useFormik } from "formik";
-
+import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loading/Loader";
 
@@ -52,7 +52,15 @@ const Reviews = () => {
                       </div>
                     </td>
                     <td className="text-left px-1 text-sm py-2 capitalize">
-                      {item?.rating}
+                      <div className="flex items-center gap-[2px]">
+                        {item?.rating}
+                        <FaStar className="text-[9px] sm:text-[13px] text-yellow-300" />
+                      </div>
+                      {/* {item?.rating ? (
+                        <div className="flex items-center gap-[2px]">
+                          <FaStar className="text-[9px] sm:text-[13px] text-yellow-300" />
+                        </div>
+                      ) : null} */}
                     </td>
                     <td className="text-left px-1 text-sm py-2 capitalize">
                       {item?.comment}

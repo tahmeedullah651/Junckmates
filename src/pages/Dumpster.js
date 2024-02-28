@@ -98,82 +98,82 @@ const Dumpster = () => {
     setDataId(dataItem._id);
   };
   return (
-    <div className="w-full h-screen my-3 rounded-lg px-4 ">
+    <div className="w-full my-3 rounded-lg px-4 ">
+      <div className="pb-3 flex gap-3 w-full items-center">
+        <form onSubmit={handleSubmit}>
+          <div className="w-full ml-4 sm:ml-0 flex justify-start gap-3 flex-col md:flex-row">
+            <div>
+              {" "}
+              <InputSmall
+                label="Add Dumpster size"
+                id="dumpsterSize"
+                name="dumpsterSize"
+                autoComplete="off"
+                type="number"
+                placeholder="Add Dumpster Size"
+                value={values.dumpsterSize}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                touch={touched.dumpsterSize}
+                error={errors.dumpsterSize}
+                customClasses={"!w-[250px]"}
+              />
+            </div>
+            <div>
+              <InputSmall
+                label="Add load size"
+                id="loadSize"
+                name="loadSize"
+                autoComplete="off"
+                type="text"
+                placeholder="Add load Size"
+                value={values.loadSize}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                touch={touched.loadSize}
+                error={errors.loadSize}
+                disable={isUpdate}
+                customClasses={"!w-[250px]"}
+                // customClasses={"lg:!w-[250px] md:!w-[150px]"}
+              />
+            </div>
+            <div className="pt-6">
+              <IconButton
+                text={isUpdate ? "Update Size" : "Add Size"}
+                type="submit"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
       {isLoading ? (
         <Loader />
       ) : isError ? (
         <div>Error: {isError}</div>
       ) : (
         <>
-          <div className="pb-3 flex gap-3 w-full items-center">
-            <form onSubmit={handleSubmit}>
-              <div className="w-full ml-4 sm:ml-0 flex justify-start gap-3 flex-col md:flex-row">
-                <div>
-                  {" "}
-                  <InputSmall
-                    label="Add Dumpster size"
-                    id="dumpsterSize"
-                    name="dumpsterSize"
-                    autoComplete="off"
-                    type="number"
-                    placeholder="Add Dumpster Size"
-                    value={values.dumpsterSize}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    touch={touched.dumpsterSize}
-                    error={errors.dumpsterSize}
-                    customClasses={"!w-[250px]"}
-                  />
-                </div>
-                <div>
-                  <InputSmall
-                    label="Add load size"
-                    id="loadSize"
-                    name="loadSize"
-                    autoComplete="off"
-                    type="text"
-                    placeholder="Add load Size"
-                    value={values.loadSize}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    touch={touched.loadSize}
-                    error={errors.loadSize}
-                    disable={isUpdate}
-                    customClasses={"!w-[250px]"}
-                    // customClasses={"lg:!w-[250px] md:!w-[150px]"}
-                  />
-                </div>
-                <div className="pt-6">
-                  <IconButton
-                    text={isUpdate ? "Update Size" : "Add Size"}
-                    type="submit"
-                  />
-                </div>
-              </div>
-            </form>
-          </div>
-          <div className="mt-7 bg-emerald-100 rounded-md mb-3 dashboardTableWrapper">
+          <div className="mt-7 px-3 bg-emerald-100 rounded-md mb-3 dashboardTableWrapper">
             <table className="w-full mr-8 sm:mr-0 min-w-[520px] border-collapse !overflow-x-auto ">
               <thead>
-                <tr>
-                  <th className="border text-left font-semibold py-5 px-2 pl-8">
+                <tr className="border-b-2">
+                  <th className=" text-left font-semibold py-5 px-2 pl-8">
                     Sr No.
                   </th>
-                  <th className="border text-left font-semibold py-5 px-2">
+                  <th className=" text-left font-semibold py-5 px-2">
                     Dumpster Sizes
                   </th>
-                  <th className="border text-left font-semibold py-5 px-2">
+                  <th className=" text-left font-semibold py-5 px-2">
                     Load Sizes
                   </th>
-                  <th className="border text-left font-semibold py-5 px-2 pl-3">
+                  <th className=" text-left font-semibold py-5 px-2 pl-3">
                     Action
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {dumpsterData.map((item, index) => (
-                  <tr key={index}>
-                    <td className="border pl-8 text-left px-2 text-sm py-2 capitalize">
+                  <tr key={index} className="border-b-2">
+                    <td className=" pl-8 text-left px-2 text-sm py-2 capitalize">
                       {index + 1}
                     </td>
                     <td className="text-left px-1 text-sm py-2 capitalize">
@@ -182,10 +182,10 @@ const Dumpster = () => {
                     <td className="text-left px-1 text-sm py-2 capitalize">
                       {item?.loadSize}
                     </td>
-                    <td className="border text-sm py-2 capitalize pl-3">
+                    <td className=" text-sm py-2 capitalize pl-3">
                       <div className="max-w-[160px]">
                         <button
-                          className="bg-emerald-400 px-4 py-2 rounded-md"
+                          className="bg-emerald-400 px-4 py-2 text-white rounded-md"
                           onClick={() => handleEdit(item)}
                         >
                           Edit

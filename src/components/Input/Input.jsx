@@ -31,7 +31,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        className={`overflow-hidden  border border-gray-300 outline-none text-gray-900 sm:text-sm rounded-lg focus:border-gray-800 block w-full 
+        className={`overflow-hidden font-normal border border-gray-300 outline-none text-gray-900 sm:text-sm rounded-lg focus:border-gray-800 block w-full 
         p-2.5 ${customClasses}`}
       />
       {error && touch ? (

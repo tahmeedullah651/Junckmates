@@ -3,8 +3,9 @@ import { Navigate, useLocation } from "react-router-dom";
 
 export const PrivateRoute = ({ children }) => {
   const currentUser = useSelector((state) => state.auth);
+  const AdminToken = localStorage.getItem("token");
   const location = useLocation();
-  if (currentUser.isAuth) {
+  if (currentUser.isAuth || AdminToken) {
     return children;
   }
 
